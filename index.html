@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Karan Pargaien — Backend Systems IDE</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+<script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body data-theme="dark">
+
+<div id="paletteOverlay"></div>
+<div id="commandPalette" class="glass">
+  <input id="paletteInput" placeholder="Type a command…" />
+  <ul id="paletteResults"></ul>
+</div>
+
+<nav id="navbar" class="glass navbar">
+  <div class="nav-social nav-social-left">
+    <a href="https://github.com/thekaranpargaie" target="_blank" title="GitHub">
+      <i class="fab fa-github"></i>
+    </a>
+    <a href="https://linkedin.com/in/thekaranpargaie" target="_blank" title="LinkedIn">
+      <i class="fab fa-linkedin"></i>
+    </a>
+    <a href="https://wa.me/919528405428" target="_blank" title="WhatsApp" class="nav-whatsapp">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+    <a href="mailto:thekaranpargaien@gmail.com" title="Email">
+      <i class="fas fa-envelope"></i>
+    </a>
+    <a href="https://instagram.com/thekaranpargaien" target="_blank" title="Instagram">
+      <i class="fab fa-instagram"></i>
+    </a>
+  </div>
+  
+  <div class="nav-social nav-social-right"></div>
+</nav>
+
+<div id="sectionNav" class="section-nav">
+  <button data-section="hero" title="Home"></button>
+  <button data-section="projects" title="Systems"></button>
+  <button data-section="stats" title="Activity"></button>
+  <button data-section="timeline" title="Timeline"></button>
+</div>
+
+
+
+<main id="canvas">
+  <section id="hero" class="hero fade">
+    <div class="hero-content">
+      <span class="status">● system healthy</span>
+      <h1>Karan Pargaien</h1>
+      <p class="subtitle">Backend Engineer / System Designer</p>
+      <p class="intro">Designing calm, observable, long‑lived backend systems.</p>
+    </div>
+  </section>
+
+  <section id="projects" class="fade">
+    <div class="section-header">
+      <h2>Systems <span class="subtitle-small">that I've built</span></h2>
+      <div id="languageFilters" class="language-filters"></div>
+    </div>
+    <div id="projectGrid" class="project-grid" data-loading="true"></div>
+  </section>
+
+  <section id="stats" class="fade">
+    <h2>GitHub Activity</h2>
+    <div id="statsContainer" class="stats-container"></div>
+  </section>
+
+  <section id="timeline" class="fade">
+    <h2>Career Stream</h2>
+    <div id="timelineStream" class="timeline"></div>
+  </section>
+</main>
+
+<script src="data/timeline.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
