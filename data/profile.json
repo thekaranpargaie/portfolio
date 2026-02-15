@@ -1,0 +1,64 @@
+{
+  "name": "Karan Pargaien",
+  "role": ".NET Engineer",
+  "tagline": "Building structured engineering systems",
+  "bio": "Full-stack developer specializing in .NET Core, cloud infrastructure, and AI integration. Passionate about crafting elegant solutions to complex engineering problems.",
+  "location": "Remote",
+  "email": "thekaranpargaien@gmail.com",
+  "skills": [
+    "C# (.NET Core)",
+    "ASP.NET Core",
+    "Microservices Architecture",
+    "DDD & CQRS",
+    "RabbitMQ",
+    "SignalR",
+    "Docker",
+    "Kubernetes",
+    "Azure",
+    "Angular",
+    "VueJS",
+    "HTML, CSS, JavaScript",
+    "RESTful APIs",
+    "OpenAPI",
+    "EF Core",
+    "LINQ",
+    "ADO.NET",
+    "MySQL",
+    "PostgreSQL",
+    "MS SQL",
+    "CI/CD & DevOps",
+    "Design Patterns",
+    "AI Integration",
+    "System Design"
+  ],
+  "socials": {
+    "github": "thekaranpargaie",
+    "linkedin": "thekaranpargaie",
+    "instagram": "thekaranpargaien",
+    "youtube": "thekaranpargaien",
+    "whatsapp": "919528405428",
+    "email": "thekaranpargaien@gmail.com"
+  },
+  "experience": [
+    {
+      "role": "Software Engineer (.NET Core)",
+      "company": "Taazaa Tech Pvt Ltd",
+      "duration": "Oct 2023 - Present",
+      "description": "Working on microservice-based DDD architecture, REST APIs, cloud solutions, DevOps pipelines, and scalable backend systems using ASP.NET Core, RabbitMQ, Docker, SignalR, and modern design patterns."
+    },
+    {
+      "role": "Software Engineer (.NET Core)",
+      "company": "Great Developers Infotech",
+      "duration": "Dec 2020 - Sep 2023",
+      "description": "Built scalable enterprise applications and RESTful APIs using ASP.NET Core, Angular, and EF Core. Focused on backend architecture, database optimization, CI/CD deployment, and client-driven feature development."
+    }
+  ],
+  "commands": {
+    "about": "Display profile information",
+    "projects": "Show all projects",
+    "stats": "Live GitHub statistics",
+    "timeline": "Career timeline",
+    "contact": "Get in touch",
+    "help": "Show available commands"
+  }
+}

@@ -1,0 +1,356 @@
+:root {
+  --primary-color: #00ff9f;
+  --secondary-color: #00bfff;
+  --error-color: #ff1744;
+  --background: #0a0a0a;
+  --surface: #1a1a1a;
+  --surface-light: #2a2a2a;
+  --text-primary: #ffffff;
+  --text-secondary: #b0b0b0;
+  --border-color: rgba(0, 255, 159, 0.2);
+  --border-color-bright: rgba(0, 255, 159, 0.5);
+  --transition-fast: 0.2s;
+  --transition-normal: 0.3s;
+  --transition-slow: 0.5s;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  background: var(--background);
+  color: var(--text-primary);
+  line-height: 1.6;
+  user-select: none;
+}
+
+/* Main Layout */
+#app {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a0f 100%);
+}
+
+.boot-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background: var(--background);
+  gap: 2rem;
+  z-index: 1000;
+}
+
+.boot-logo {
+  font-size: 3rem;
+  text-shadow: 0 0 20px var(--primary-color);
+  margin-bottom: 2rem;
+  letter-spacing: 2px;
+}
+
+.boot-text {
+  font-size: 0.9rem;
+  color: var(--primary-color);
+  height: 1.5rem;
+  min-width: 300px;
+}
+
+.progress-bar {
+  width: 300px;
+  height: 4px;
+  background: var(--surface-light);
+  border: 1px solid var(--border-color);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  width: 0%;
+  animation: fillProgress 2s ease-in-out;
+}
+
+@keyframes fillProgress {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+/* Sidebar */
+.sidebar {
+  width: 280px;
+  background: var(--surface);
+  border-right: 1px solid var(--border-color);
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.profile-card {
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.profile-card h2 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: var(--primary-color);
+}
+
+.profile-card p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.skill-tag {
+  font-size: 0.75rem;
+  padding: 0.35rem 0.75rem;
+  background: rgba(0, 255, 159, 0.1);
+  border: 1px solid var(--border-color);
+  border-radius: 3px;
+  color: var(--primary-color);
+  transition: all var(--transition-fast);
+  cursor: default;
+}
+
+.skill-tag:hover {
+  background: rgba(0, 255, 159, 0.2);
+  border-color: var(--border-color-bright);
+}
+
+.commands-section h3 {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  margin: 1.5rem 0 1rem 0;
+  letter-spacing: 1px;
+}
+
+.command-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.command-item {
+  padding: 0.75rem 1rem;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all var(--transition-fast);
+  text-align: left;
+}
+
+.command-item:hover {
+  background: rgba(0, 255, 159, 0.1);
+  border-color: var(--border-color);
+  color: var(--primary-color);
+}
+
+.command-item.active {
+  background: rgba(0, 255, 159, 0.15);
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+/* Main Content Area */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(135deg, #0a0a0a 0%, #0f0f15 100%);
+}
+
+/* Header/Terminal Bar */
+.terminal-header {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+.terminal-title {
+  font-size: 0.9rem;
+  color: var(--primary-color);
+  letter-spacing: 2px;
+}
+
+.terminal-info {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+/* Console Output */
+.console {
+  flex: 1;
+  padding: 1.5rem;
+  overflow-y: auto;
+  font-size: 0.9rem;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.console-line {
+  margin: 0.5rem 0;
+  color: var(--text-secondary);
+}
+
+.console-line.info {
+  color: var(--secondary-color);
+}
+
+.console-line.success {
+  color: var(--primary-color);
+}
+
+.console-line.error {
+  color: var(--error-color);
+}
+
+.console-line.prompt {
+  color: var(--primary-color);
+}
+
+.console-line .prompt-symbol {
+  color: var(--primary-color);
+  margin-right: 0.5rem;
+}
+
+/* Bottom Panel with Stats */
+.stats-panel {
+  border-top: 1px solid var(--border-color);
+  padding: 1.5rem;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1.5rem;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+}
+
+.stat-value {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 4px;
+  opacity: 0.5;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  opacity: 0.8;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .sidebar {
+    width: 220px;
+    padding: 1.5rem 1rem;
+  }
+
+  .terminal-header {
+    padding: 0.75rem 1rem;
+  }
+
+  .console {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  #app {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid var(--border-color);
+    padding: 1rem;
+    max-height: 150px;
+    overflow-x: auto;
+    flex-direction: row;
+  }
+
+  .profile-card {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+    margin-right: 2rem;
+  }
+
+  .commands-section {
+    display: none;
+  }
+
+  .main-content {
+    flex: 1;
+  }
+
+  .stats-panel {
+    max-height: 100px;
+  }
+}
