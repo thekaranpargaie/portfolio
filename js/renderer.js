@@ -153,7 +153,7 @@ class Renderer {
     bootScreen.className = 'boot-screen';
 
     bootScreen.innerHTML = `
-      <div class="boot-logo">$ DEVELOPER_ENV</div>
+      <div class="boot-logo">$ The_Karan_Pargaien</div>
       <div class="boot-text" id="bootText"></div>
       <div class="progress-bar">
         <div class="progress-fill"></div>
