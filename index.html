@@ -64,6 +64,38 @@
       .console-line {
         scroll-behavior: smooth;
       }
+
+      /* Desktop only elements */
+      .desktop-only {
+        display: block !important;
+      }
+
+      @media (max-width: 768px) {
+        .desktop-only {
+          display: none !important;
+        }
+      }
+
+      /* Suggestion pills */
+      .suggestion-pill {
+        transition: all 0.2s ease;
+      }
+
+      .suggestion-pill:hover {
+        background: rgba(0, 255, 159, 0.2) !important;
+        border-color: rgba(0, 255, 159, 0.6) !important;
+        box-shadow: 0 0 8px rgba(0, 255, 159, 0.2);
+      }
+
+      .suggestion-pill:active {
+        transform: scale(0.95);
+      }
+
+      @media (max-width: 768px) {
+        #commandSuggestions {
+          display: block !important;
+        }
+      }
     </style>
   </head>
   <body>
@@ -91,18 +123,36 @@
 
         <!-- Command Input -->
         <div style="padding: 1.5rem; border-top: 1px solid var(--border-color); background: rgba(0, 0, 0, 0.3);">
+          <!-- Mobile Command Suggestions -->
+          <div id="commandSuggestions" style="display: none; margin-bottom: 1rem; overflow-x: auto; padding-bottom: 0.5rem;">
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+              <button class="suggestion-pill" data-command="about" style="background: rgba(0, 255, 159, 0.1); border: 1px solid rgba(0, 255, 159, 0.3); color: var(--primary-color); padding: 0.4rem 0.8rem; border-radius: 20px; font-size: 0.7rem; cursor: pointer; transition: all 0.2s; font-family: inherit;">about</button>
+              <button class="suggestion-pill" data-command="projects" style="background: rgba(0, 255, 159, 0.1); border: 1px solid rgba(0, 255, 159, 0.3); color: var(--primary-color); padding: 0.4rem 0.8rem; border-radius: 20px; font-size: 0.7rem; cursor: pointer; transition: all 0.2s; font-family: inherit;">projects</button>
+              <button class="suggestion-pill" data-command="skills" style="background: rgba(0, 255, 159, 0.1); border: 1px solid rgba(0, 255, 159, 0.3); color: var(--primary-color); padding: 0.4rem 0.8rem; border-radius: 20px; font-size: 0.7rem; cursor: pointer; transition: all 0.2s; font-family: inherit;">skills</button>
+              <button class="suggestion-pill" data-command="timeline" style="background: rgba(0, 255, 159, 0.1); border: 1px solid rgba(0, 255, 159, 0.3); color: var(--primary-color); padding: 0.4rem 0.8rem; border-radius: 20px; font-size: 0.7rem; cursor: pointer; transition: all 0.2s; font-family: inherit;">timeline</button>
+              <button class="suggestion-pill" data-command="stats" style="background: rgba(0, 255, 159, 0.1); border: 1px solid rgba(0, 255, 159, 0.3); color: var(--primary-color); padding: 0.4rem 0.8rem; border-radius: 20px; font-size: 0.7rem; cursor: pointer; transition: all 0.2s; font-family: inherit;">stats</button>
+              <button class="suggestion-pill" data-command="contact" style="background: rgba(0, 255, 159, 0.1); border: 1px solid rgba(0, 255, 159, 0.3); color: var(--primary-color); padding: 0.4rem 0.8rem; border-radius: 20px; font-size: 0.7rem; cursor: pointer; transition: all 0.2s; font-family: inherit;">contact</button>
+              <button class="suggestion-pill" data-command="help" style="background: rgba(0, 255, 159, 0.1); border: 1px solid rgba(0, 255, 159, 0.3); color: var(--primary-color); padding: 0.4rem 0.8rem; border-radius: 20px; font-size: 0.7rem; cursor: pointer; transition: all 0.2s; font-family: inherit;">help</button>
+            </div>
+          </div>
+
           <div style="display: flex; align-items: center; gap: 0.5rem;">
-            <span style="color: var(--primary-color);">$</span>
+            <span style="color: var(--primary-color); flex-shrink: 0;">$</span>
             <input
               type="text"
               id="commandInput"
-              placeholder="Type 'help' for available commands..."
+              placeholder="Type 'help'..."
               autocomplete="off"
               spellcheck="false"
             />
           </div>
-          <div style="margin-top: 0.5rem; font-size: 0.75rem; color: var(--text-secondary);">
+          <div style="margin-top: 0.5rem; font-size: 0.75rem; color: var(--text-secondary); display: none;" class="desktop-only">
             💡 Tip: Use ↑↓ arrow keys to navigate command history
+          </div>
+          <!-- Mobile Connect Section -->
+          <div id="mobileConnect" style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--border-color); text-align: center; display: none;">
+            <p style="color: var(--text-secondary); font-size: 0.65rem; margin-bottom: 0.5rem;">Connect</p>
+            <div id="mobileConnectIcons" style="display: flex; justify-content: center; gap: 0.75rem; font-size: 0.9rem;"></div>
           </div>
         </div>
 

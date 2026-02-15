@@ -28,6 +28,9 @@ class Renderer {
     const sidebar = document.querySelector('.sidebar');
     if (!sidebar) return;
 
+    // Check if mobile
+    const isMobile = window.innerWidth <= 768;
+
     // Social icon mapping
     const socialIcons = {
       github: { icon: 'fab fa-github', url: (v) => `https://github.com/${v}` },
@@ -60,16 +63,20 @@ class Renderer {
         <h2>${profile.name}</h2>
         <p style="color: var(--primary-color); font-weight: bold;">${profile.role}</p>
         <p>${profile.tagline}</p>
-        <div class="skills-list">
+        ${
+          !isMobile
+            ? `<div class="skills-list">
           ${profile.skills
             .slice(0, 4)
             .map((skill) => `<span class="skill-tag">${skill}</span>`)
             .join('')}
           ${profile.skills.length > 4 ? `<span class="skill-tag">+${profile.skills.length - 4}</span>` : ''}
-        </div>
+        </div>`
+            : ''
+        }
       </div>
 
-      <div class="commands-section">
+      <div class="commands-section" ${isMobile ? 'style="display: none;"' : ''}>
         <h3>⚡ Commands</h3>
         <div class="command-list">
           <button class="command-item" data-command="about">about</button>
@@ -82,8 +89,8 @@ class Renderer {
         </div>
       </div>
 
-      <div style="margin-top: auto; padding-top: 2rem; border-top: 1px solid var(--border-color); text-align: center;">
-        <p style="color: var(--text-secondary); font-size: 0.75rem; margin-bottom: 0.75rem;">Connect</p>
+      <div style="margin-top: ${isMobile ? '0.75rem' : 'auto'}; padding-top: 1rem; border-top: 1px solid var(--border-color); text-align: center; ${isMobile ? 'display: none;' : ''}">
+        <p style="color: var(--text-secondary); font-size: 0.75rem; margin-bottom: 0.5rem;">Connect</p>
         <div style="display: flex; justify-content: center; gap: 1rem; font-size: 1rem;">
           ${socialsHtml}
         </div>
@@ -101,6 +108,29 @@ class Renderer {
         icon.style.textShadow = 'none';
       });
     });
+
+    // Mobile connect section
+    if (isMobile) {
+      const mobileConnect = document.querySelector('#mobileConnect');
+      const mobileConnectIcons = document.querySelector('#mobileConnectIcons');
+      
+      if (mobileConnect && mobileConnectIcons) {
+        mobileConnectIcons.innerHTML = socialsHtml;
+        mobileConnect.style.display = 'block';
+        
+        // Add hover effects for mobile icons
+        mobileConnectIcons.querySelectorAll('.social-icon').forEach((icon) => {
+          icon.addEventListener('mouseenter', () => {
+            icon.style.color = 'var(--primary-color)';
+            icon.style.textShadow = '0 0 10px rgba(0, 255, 159, 0.3)';
+          });
+          icon.addEventListener('mouseleave', () => {
+            icon.style.color = 'var(--text-secondary)';
+            icon.style.textShadow = 'none';
+          });
+        });
+      }
+    }
   }
 
   renderStats(stats) {

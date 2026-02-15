@@ -77,7 +77,7 @@ class App {
       commandInput.focus();
     }
 
-    // Command buttons
+    // Command buttons (sidebar)
     const commandButtons = document.querySelectorAll('.command-item');
     commandButtons.forEach((btn) => {
       btn.addEventListener('click', () => {
@@ -90,6 +90,18 @@ class App {
         // Update active state
         commandButtons.forEach((b) => b.classList.remove('active'));
         btn.classList.add('active');
+      });
+    });
+
+    // Suggestion pills (mobile)
+    const suggestionPills = document.querySelectorAll('.suggestion-pill');
+    suggestionPills.forEach((pill) => {
+      pill.addEventListener('click', () => {
+        const command = pill.dataset.command;
+        commandInput.value = command;
+        this.terminal.executeCommand(command);
+        commandInput.value = '';
+        commandInput.focus();
       });
     });
 
