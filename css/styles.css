@@ -257,7 +257,8 @@ body {
 }
 
 .code-window {
-    width: 520px;
+    width: 100%;
+    max-width: 520px;
     height: 560px;
     background: var(--bg-secondary);
     border: 1px solid var(--border-color);
@@ -265,6 +266,7 @@ body {
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    margin: 0 auto;
 }
 
 .window-bar {
@@ -333,7 +335,9 @@ body {
     background: var(--bg-secondary);
     align-items: center;
     overflow-x: auto;
+    overflow-y: hidden;
     white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
 }
 
 .tech-ticker span {
@@ -361,20 +365,54 @@ body {
 
 @media (max-width: 768px) {
     .hero {
-        padding: 100px 24px 60px;
+        padding: 80px 24px 50px;
+        margin-top: 64px;
+    }
+
+    .hero-container {
+        gap: 30px;
     }
 
     .hero-heading {
         font-size: 42px;
+        line-height: 1.1;
     }
 
     .hero-subtitle {
         font-size: 18px;
     }
 
+    .hero-tagline {
+        font-size: 15px;
+    }
+
+    .cta-buttons {
+        flex-wrap: wrap;
+    }
+
+    .btn {
+        padding: 12px 24px;
+        font-size: 13px;
+    }
+
+    .code-window {
+        height: 400px;
+        max-width: 100%;
+    }
+
+    .code-body {
+        font-size: 11px;
+        padding: 16px;
+    }
+
     .tech-ticker {
-        padding: 0 24px;
-        gap: 20px;
+        padding: 0 16px;
+        gap: 16px;
+        height: 50px;
+    }
+
+    .tech-ticker span {
+        font-size: 12px;
     }
 }
 
@@ -399,6 +437,7 @@ body {
     object-fit: cover;
     border-radius: 20px;
     border: 1px solid var(--border-color);
+    background: linear-gradient(135deg, var(--bg-secondary), var(--border-color));
 }
 
 .about-content {
@@ -475,6 +514,18 @@ body {
 @media (max-width: 768px) {
     .about {
         padding: 60px 24px;
+    }
+
+    .about-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .about-image {
+        width: 100%;
+        max-width: 350px;
+        height: auto;
+        margin: 0 auto;
     }
 
     .about-content h2 {

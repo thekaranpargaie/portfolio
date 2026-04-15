@@ -46,13 +46,21 @@ async function loadGitHubData() {
     try {
         // Fetch user data
         const userResponse = await fetch(`${GITHUB_API}/users/${GITHUB_USERNAME}`);
+        if (!userResponse.ok) {
+            throw new Error(`GitHub API error: ${userResponse.status}`);
+        }
         const userData = await userResponse.json();
+        console.log('%c ✅ GitHub user data loaded', 'color: #28C840');
 
         // Fetch repositories
         const reposResponse = await fetch(
             `${GITHUB_API}/users/${GITHUB_USERNAME}/repos?per_page=100&sort=stars&order=desc`
         );
+        if (!reposResponse.ok) {
+            throw new Error(`GitHub repos API error: ${reposResponse.status}`);
+        }
         const repos = await reposResponse.json();
+        console.log('%c ✅ GitHub repos loaded: ' + repos.length, 'color: #28C840');
 
         // Update stats
         updateStats(userData, repos);
@@ -60,7 +68,12 @@ async function loadGitHubData() {
         // Load projects
         loadProjects(repos);
     } catch (error) {
-        console.error('Error fetching GitHub data:', error);
+        console.error('%c ❌ Error fetching GitHub data:', 'color: #FF5F57', error);
+        // Show fallback message
+        const projectsGrid = document.getElementById('projectsGrid');
+        if (projectsGrid) {
+            projectsGrid.innerHTML = '<p style="grid-column: 1 / -1; text-align: center; color: #6B7280; padding: 40px;">Projects loading from GitHub...</p>';
+        }
     }
 }
 
@@ -169,20 +182,42 @@ function initContactForm() {
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
 
-        const formData = new FormData(form);
-        const name = form.querySelector('input[type="text"]').value;
-        const email = form.querySelector('input[type="email"]').value;
-        const message = form.querySelector('textarea').value;
+        const nameInput = form.querySelector('input[type="text"]');
+        const emailInput = form.querySelector('input[type="email"]');
+        const messageInput = form.querySelector('textarea');
+        
+        const name = nameInput.value.trim();
+        const email = emailInput.value.trim();
+        const message = messageInput.value.trim();
 
-        // Email fallback (since static site, this opens email client)
+        // Validate inputs
+        if (!name || !email || !message) {
+            console.warn('%c ⚠️  Form has empty fields', 'color: #FEBC2E');
+            alert('Please fill in all fields');
+            return;
+        }
+
+        // Email validation
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            console.warn('%c ⚠️  Invalid email format', 'color: #FEBC2E');
+            alert('Please enter a valid email address');
+            return;
+        }
+
+        // Create email link
         const subject = `Portfolio Contact: ${name}`;
-        const body = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
+        const body = `From: ${email}\n\nMessage:\n${message}`;
         const mailtoLink = `mailto:thekaranpargaien@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
+        console.log('%c ✅ Opening email client...', 'color: #28C840');
         window.location.href = mailtoLink;
 
-        // Reset form
-        form.reset();
+        // Reset form after a short delay
+        setTimeout(() => {
+            form.reset();
+            nameInput.focus();
+        }, 100);
     });
 }
 
@@ -281,5 +316,15 @@ document.addEventListener('keypress', (e) => {
     }
 });
 
+// ===== Image Loading Verification =====
+document.addEventListener('load', () => {
+    const portraitImg = document.querySelector('.about-image');
+    if (portraitImg && portraitImg.complete && portraitImg.naturalHeight === 0) {
+        console.warn('%c ⚠️  Portrait image failed to load. Make sure portrait.png is in /assets/images/', 'color: #FEBC2E; font-weight: bold;');
+    }
+}, true);
+
 console.log('%c Welcome to Karan\'s Portfolio! ', 'background: #6C63FF; color: white; padding: 10px 20px; border-radius: 5px; font-weight: bold;');
 console.log('%c Built with: HTML, CSS, Vanilla JS & GitHub API', 'color: #00D4AA; font-size: 12px;');
+console.log('%c GitHub API Username: thekaranpargaie', 'color: #6C63FF; font-size: 11px;');
+console.log('%c Contact: thekaranpargaien@gmail.com', 'color: #00D4AA; font-size: 11px;');
