@@ -1,189 +1,380 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Karan Pargaien | Developer Interface</title>
+    <meta name="description" content="Karan Pargaien - .NET Engineer & Full-Stack Developer" />
+    <meta name="author" content="Karan Pargaien" />
+    <title>Karan Pargaien | .NET Engineer & Full-Stack Developer</title>
 
     <!-- Fonts -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <!-- Font Awesome Icons -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="css/base.css" />
-    <link rel="stylesheet" href="css/animations.css" />
-    <link rel="stylesheet" href="css/terminal.css" />
-
-    <style>
-      /* Additional fade-out animation for boot screen */
-      .fade-out {
-        animation: fadeOut 0.5s ease-out forwards;
-      }
-
-      @keyframes fadeOut {
-        from {
-          opacity: 1;
-        }
-        to {
-          opacity: 0;
-        }
-      }
-
-      /* Boot mode - hide main content */
-      #app.boot-mode .sidebar,
-      #app.boot-mode .main-content,
-      #app.boot-mode .scan-lines {
-        display: none;
-      }
-
-      /* Normal mode - hide boot screen */
-      #app:not(.boot-mode) .boot-screen {
-        display: none;
-      }
-
-      /* Hover effects */
-      .hover-icon:hover {
-        color: var(--primary-color) !important;
-        text-shadow: 0 0 10px rgba(0, 255, 159, 0.3);
-      }
-
-      /* Command input styling */
-      #commandInput {
-        width: 100%;
-        margin-top: 0.75rem;
-      }
-
-      /* Scroll into view on new messages */
-      .console-line {
-        scroll-behavior: smooth;
-      }
-
-      /* Desktop only elements */
-      .desktop-only {
-        display: block !important;
-      }
-
-      @media (max-width: 768px) {
-        .desktop-only {
-          display: none !important;
-        }
-      }
-
-      /* Suggestion pills */
-      .suggestion-pill {
-        transition: all 0.2s ease;
-      }
-
-      .suggestion-pill:hover {
-        background: rgba(0, 255, 159, 0.2) !important;
-        border-color: rgba(0, 255, 159, 0.6) !important;
-        box-shadow: 0 0 8px rgba(0, 255, 159, 0.2);
-      }
-
-      .suggestion-pill:active {
-        transform: scale(0.95);
-      }
-
-      @media (max-width: 768px) {
-        #commandSuggestions {
-          display: block !important;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <div id="app">
-      <!-- Sidebar -->
-      <div class="sidebar">
-        <div class="profile-card">
-          <h2>Loading...</h2>
-          <p>Initializing profile</p>
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">KP</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="hire-btn" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Hire Me</button>
         </div>
-      </div>
+    </nav>
 
-      <!-- Main Content -->
-      <div class="main-content">
-        <!-- Terminal Header -->
-        <div class="terminal-header">
-          <div class="terminal-title">$ TERMINAL.EXE</div>
-          <div class="terminal-info">
-            Connected • Ready to execute • <span id="timestamp"></span>
-          </div>
-        </div>
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-container">
+            <div class="hero-left">
+                <div class="available-badge">
+                    <div class="badge-dot"></div>
+                    <span>Available for Work</span>
+                </div>
 
-        <!-- Console Output -->
-        <div class="console"></div>
+                <h1 class="hero-heading">Karan<br />Pargaien</h1>
 
-        <!-- Command Input -->
-        <div style="padding: 1.5rem; border-top: 1px solid var(--border-color); background: rgba(0, 0, 0, 0.3);">
-          <!-- Mobile Command Suggestions -->
-          <div id="commandSuggestions" style="display: none; margin-bottom: 1rem; overflow-x: auto; padding-bottom: 0.5rem;">
-            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-              <button class="suggestion-pill" data-command="about" style="background: rgba(0, 255, 159, 0.1); border: 1px solid rgba(0, 255, 159, 0.3); color: var(--primary-color); padding: 0.4rem 0.8rem; border-radius: 20px; font-size: 0.7rem; cursor: pointer; transition: all 0.2s; font-family: inherit;">about</button>
-              <button class="suggestion-pill" data-command="projects" style="background: rgba(0, 255, 159, 0.1); border: 1px solid rgba(0, 255, 159, 0.3); color: var(--primary-color); padding: 0.4rem 0.8rem; border-radius: 20px; font-size: 0.7rem; cursor: pointer; transition: all 0.2s; font-family: inherit;">projects</button>
-              <button class="suggestion-pill" data-command="skills" style="background: rgba(0, 255, 159, 0.1); border: 1px solid rgba(0, 255, 159, 0.3); color: var(--primary-color); padding: 0.4rem 0.8rem; border-radius: 20px; font-size: 0.7rem; cursor: pointer; transition: all 0.2s; font-family: inherit;">skills</button>
-              <button class="suggestion-pill" data-command="timeline" style="background: rgba(0, 255, 159, 0.1); border: 1px solid rgba(0, 255, 159, 0.3); color: var(--primary-color); padding: 0.4rem 0.8rem; border-radius: 20px; font-size: 0.7rem; cursor: pointer; transition: all 0.2s; font-family: inherit;">timeline</button>
-              <button class="suggestion-pill" data-command="stats" style="background: rgba(0, 255, 159, 0.1); border: 1px solid rgba(0, 255, 159, 0.3); color: var(--primary-color); padding: 0.4rem 0.8rem; border-radius: 20px; font-size: 0.7rem; cursor: pointer; transition: all 0.2s; font-family: inherit;">stats</button>
-              <button class="suggestion-pill" data-command="contact" style="background: rgba(0, 255, 159, 0.1); border: 1px solid rgba(0, 255, 159, 0.3); color: var(--primary-color); padding: 0.4rem 0.8rem; border-radius: 20px; font-size: 0.7rem; cursor: pointer; transition: all 0.2s; font-family: inherit;">contact</button>
-              <button class="suggestion-pill" data-command="help" style="background: rgba(0, 255, 159, 0.1); border: 1px solid rgba(0, 255, 159, 0.3); color: var(--primary-color); padding: 0.4rem 0.8rem; border-radius: 20px; font-size: 0.7rem; cursor: pointer; transition: all 0.2s; font-family: inherit;">help</button>
+                <h2 class="hero-subtitle">.NET Engineer · Full-Stack Developer</h2>
+
+                <p class="hero-tagline">
+                    Building scalable backends and elegant frontends with .NET Core, Azure & modern web technologies.
+                </p>
+
+                <div class="cta-buttons">
+                    <button class="btn btn-primary" onclick="document.getElementById('projects').scrollIntoView({behavior: 'smooth'})">View Work</button>
+                    <button class="btn btn-outline" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Contact Me</button>
+                </div>
             </div>
-          </div>
 
-          <div style="display: flex; align-items: center; gap: 0.5rem;">
-            <span style="color: var(--primary-color); flex-shrink: 0;">$</span>
-            <input
-              type="text"
-              id="commandInput"
-              placeholder="Type 'help'..."
-              autocomplete="off"
-              spellcheck="false"
-            />
-          </div>
-          <div style="margin-top: 0.5rem; font-size: 0.75rem; color: var(--text-secondary); display: none;" class="desktop-only">
-            💡 Tip: Use ↑↓ arrow keys to navigate command history
-          </div>
-          <!-- Mobile Connect Section -->
-          <div id="mobileConnect" style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--border-color); text-align: center; display: none;">
-            <p style="color: var(--text-secondary); font-size: 0.65rem; margin-bottom: 0.5rem;">Connect</p>
-            <div id="mobileConnectIcons" style="display: flex; justify-content: center; gap: 0.75rem; font-size: 0.9rem;"></div>
-          </div>
+            <div class="hero-right">
+                <div class="code-window">
+                    <div class="window-bar">
+                        <div class="dot dot-red"></div>
+                        <div class="dot dot-yellow"></div>
+                        <div class="dot dot-green"></div>
+                        <span class="window-title">Program.cs</span>
+                    </div>
+                    <div class="code-body">
+                        <pre><code>// Karan Pargaien — .NET Engineer
+using Microsoft.AspNetCore.Builder;
+using DomainDriven.Architecture;
+
+var builder = WebApplication.CreateBuilder();
+
+builder.Services
+  .AddMicroservices()
+  .AddRabbitMQ()
+  .AddSignalR()
+  .AddAzureCloud();
+
+var app = builder.Build();
+app.MapControllers();
+app.UseAzureMonitoring();
+app.Run(); // Let's build! 🚀</code></pre>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <!-- Stats Panel -->
-        <div class="stats-panel">
-          <div style="color: var(--text-secondary); font-size: 0.75rem;">
-            Loading GitHub stats...
-          </div>
+        <!-- Tech Ticker -->
+        <div class="tech-ticker">
+            <span>C# · .NET Core</span>
+            <span>ASP.NET Core</span>
+            <span>Azure</span>
+            <span>Docker · Kubernetes</span>
+            <span>Angular</span>
+            <span>PostgreSQL</span>
+            <span>RabbitMQ</span>
+            <span>SignalR</span>
+            <span>Microservices · DDD</span>
         </div>
-      </div>
-    </div>
+    </section>
 
-    <!-- Scan Lines Effect -->
-    <div class="scan-lines"></div>
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about-container">
+            <img src="https://images.unsplash.com/photo-1761963108315-739eb365d446?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzYyNTUyODV8&ixlib=rb-4.1.0&q=80&w=500" alt="Karan Pargaien" class="about-image" />
+            
+            <div class="about-content">
+                <h2>About Me</h2>
+                <p>
+                    Full-stack .NET developer with 5+ years of experience building enterprise-grade software. 
+                    I specialize in .NET Core microservices, cloud infrastructure on Azure, and seamlessly integrate 
+                    AI capabilities into modern web applications. Passionate about clean architecture, domain-driven design, 
+                    and delivering software that scales.
+                </p>
 
-    <!-- App Script -->
-    <script type="module" src="js/app.js"></script>
+                <div class="about-tags">
+                    <span class="tag">Remote</span>
+                    <span class="tag">India</span>
+                    <span class="tag">5+ Years Experience</span>
+                </div>
 
-    <!-- Update timestamp -->
-    <script>
-      function updateTimestamp() {
-        const timestamp = document.querySelector('#timestamp');
-        if (timestamp) {
-          const now = new Date();
-          const time = now.toLocaleTimeString();
-          timestamp.textContent = time;
-        }
-      }
+                <div class="social-icons">
+                    <a href="https://github.com/thekaranpargaie" target="_blank" title="GitHub" class="social-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                    </a>
+                    <a href="https://linkedin.com/in/thekaranpargaie" target="_blank" title="LinkedIn" class="social-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"></path><circle cx="4" cy="4" r="2"></circle></svg>
+                    </a>
+                    <a href="https://instagram.com/thekaranpargaien" target="_blank" title="Instagram" class="social-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><circle cx="17.5" cy="6.5" r="1.5"></circle></svg>
+                    </a>
+                    <a href="https://youtube.com/@thekaranpargaien" target="_blank" title="YouTube" class="social-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.50 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+                    </a>
+                    <a href="https://wa.me/919528405428" target="_blank" title="WhatsApp" class="social-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.228 2.231A10.77 10.77 0 0 0 2.046 22.07l-1.754 3.699 3.897-1.602A10.768 10.768 0 0 0 22.228 2.231z"></path><path d="M17.187 14.355c-.253-.627-1.465-1.253-2.018-1.38-.553-.126-1.38-.127-2.18.253-.551.253-1.38.628-1.38 1.507 0 .88.88 1.128 1.38 1.38 1.099.504 1.75 1.003 2.018 1.629.268.627.268 1.628-.253 2.255-.521.626-1.38 1.003-2.18.88-2.269-.378-4.537-1.883-5.926-3.899-.38-.575-.567-1.127-.567-1.879 0-.629.19-1.253.567-1.879 1.39-2.016 3.657-3.52 5.926-3.898.8-.126 1.659.253 2.18.88.522.627.522 1.628.253 2.255-.268.626-.919 1.125-2.018 1.629-.5.252-1.38.5-1.38 1.38 0 .879.829 1.254 1.38 1.507.8.38 1.627.38 2.18.253.553-.127 1.765-.753 2.018-1.38z"></path></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-      updateTimestamp();
-      setInterval(updateTimestamp, 1000);
-    </script>
-  </body>
+    <!-- Skills Section -->
+    <section class="skills" id="skills">
+        <div class="skills-container">
+            <h2>Technical Skills</h2>
+            <p class="skills-subtitle">Technologies & tools I work with every day</p>
+
+            <div class="skills-grid">
+                <!-- Backend -->
+                <div class="skill-category">
+                    <h3 class="category-label backend">Backend</h3>
+                    <div class="skill-cards">
+                        <span class="skill-card">C#</span>
+                        <span class="skill-card">.NET Core</span>
+                        <span class="skill-card">ASP.NET Core</span>
+                        <span class="skill-card">Microservices</span>
+                        <span class="skill-card">DDD</span>
+                        <span class="skill-card">CQRS</span>
+                        <span class="skill-card">RabbitMQ</span>
+                        <span class="skill-card">SignalR</span>
+                    </div>
+                </div>
+
+                <!-- DevOps / Cloud -->
+                <div class="skill-category">
+                    <h3 class="category-label devops">DevOps / Cloud</h3>
+                    <div class="skill-cards">
+                        <span class="skill-card">Docker</span>
+                        <span class="skill-card">Kubernetes</span>
+                        <span class="skill-card">Azure</span>
+                        <span class="skill-card">CI/CD</span>
+                        <span class="skill-card">AWS</span>
+                        <span class="skill-card">GitHub Actions</span>
+                    </div>
+                </div>
+
+                <!-- Frontend -->
+                <div class="skill-category">
+                    <h3 class="category-label backend">Frontend</h3>
+                    <div class="skill-cards">
+                        <span class="skill-card">Angular</span>
+                        <span class="skill-card">VueJS</span>
+                        <span class="skill-card">React</span>
+                        <span class="skill-card">HTML/CSS</span>
+                        <span class="skill-card">JavaScript</span>
+                        <span class="skill-card">TypeScript</span>
+                    </div>
+                </div>
+
+                <!-- Database -->
+                <div class="skill-category">
+                    <h3 class="category-label devops">Database</h3>
+                    <div class="skill-cards">
+                        <span class="skill-card">EF Core</span>
+                        <span class="skill-card">MySQL</span>
+                        <span class="skill-card">PostgreSQL</span>
+                        <span class="skill-card">MS SQL</span>
+                        <span class="skill-card">LINQ</span>
+                        <span class="skill-card">ADO.NET</span>
+                    </div>
+                </div>
+
+                <!-- Design & Architecture -->
+                <div class="skill-category">
+                    <h3 class="category-label backend">Design & Architecture</h3>
+                    <div class="skill-cards">
+                        <span class="skill-card">System Design</span>
+                        <span class="skill-card">Design Patterns</span>
+                        <span class="skill-card">OpenAPI</span>
+                        <span class="skill-card">RESTful APIs</span>
+                        <span class="skill-card">AI Integration</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="experience" id="experience">
+        <div class="experience-container">
+            <h2>Work Experience</h2>
+            <p class="experience-subtitle">Where I've applied my skills professionally</p>
+
+            <div class="timeline">
+                <div class="timeline-bar"></div>
+                <div class="timeline-content">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <h3>Software Engineer (.NET Core)</h3>
+                        <p class="company">Taazaa Tech Pvt Ltd</p>
+                        <p class="duration">Oct 2023 – Present</p>
+                        <p class="description">
+                            Working on microservice-based DDD architecture, REST APIs, cloud solutions, DevOps pipelines, and scalable backend systems using ASP.NET Core, RabbitMQ, Docker, SignalR, and modern design patterns.
+                        </p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <h3>Software Engineer (.NET Core)</h3>
+                        <p class="company">Great Developers Infotech</p>
+                        <p class="duration">Dec 2020 – Sep 2023</p>
+                        <p class="description">
+                            Built scalable enterprise applications and RESTful APIs using ASP.NET Core, Angular, and EF Core. Focused on backend architecture, database optimization, CI/CD deployment, and client-driven feature development.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+        <div class="projects-container">
+            <h2>Featured Projects</h2>
+            <p class="projects-subtitle">Open-source work & side projects built with passion</p>
+
+            <div class="projects-grid" id="projectsGrid">
+                <!-- Projects will be loaded dynamically from GitHub -->
+            </div>
+        </div>
+    </section>
+
+    <!-- GitHub Stats Section -->
+    <section class="github-stats" id="github-stats">
+        <div class="stats-container">
+            <div class="section-label">
+                <div class="label-pill">
+                    <div class="pill-dot"></div>
+                    <span>GitHub Activity</span>
+                </div>
+            </div>
+
+            <h2>GitHub Activity</h2>
+            <p>A snapshot of my open-source contributions and coding habits.</p>
+
+            <div class="stats-cards">
+                <div class="stat-card" id="totalCommits">
+                    <div class="stat-value">--</div>
+                    <div class="stat-label">Total Commits</div>
+                </div>
+                <div class="stat-card" id="repos">
+                    <div class="stat-value">--</div>
+                    <div class="stat-label">Repositories</div>
+                </div>
+                <div class="stat-card" id="followers">
+                    <div class="stat-value">--</div>
+                    <div class="stat-label">Followers</div>
+                </div>
+                <div class="stat-card" id="stars">
+                    <div class="stat-value">--</div>
+                    <div class="stat-label">Total Stars</div>
+                </div>
+            </div>
+
+            <div class="languages-section">
+                <h3>Most Used Languages</h3>
+                <div class="languages-list" id="languagesList">
+                    <!-- Languages will be populated -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="contact-container">
+            <div class="contact-label">
+                <div class="label-pill">
+                    <div class="pill-dot teal"></div>
+                    <span>Get In Touch</span>
+                </div>
+            </div>
+
+            <h2>Let's build something.</h2>
+            <p class="contact-subtitle">
+                Have a project in mind, an opportunity to discuss, or just want to say hi? My inbox is always open.
+            </p>
+
+            <a href="mailto:thekaranpargaien@gmail.com" class="email-button">
+                <span>thekaranpargaien@gmail.com</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+            </a>
+
+            <form class="contact-form" id="contactForm">
+                <div class="form-row">
+                    <input type="text" placeholder="Your Name" required />
+                    <input type="email" placeholder="Your Email" required />
+                </div>
+                <textarea placeholder="Your Message" rows="5" required></textarea>
+                <button type="submit" class="submit-btn">
+                    <span>Send Message</span>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </button>
+            </form>
+
+            <div class="social-divider">
+                <div class="divider-line"></div>
+                <span>or connect on</span>
+                <div class="divider-line"></div>
+            </div>
+
+            <div class="social-buttons">
+                <a href="https://github.com/thekaranpargaie" target="_blank" class="social-btn" title="GitHub">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                </a>
+                <a href="https://linkedin.com/in/thekaranpargaie" target="_blank" class="social-btn" title="LinkedIn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"></path><circle cx="4" cy="4" r="2"></circle></svg>
+                </a>
+                <a href="https://instagram.com/thekaranpargaien" target="_blank" class="social-btn" title="Instagram">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><circle cx="17.5" cy="6.5" r="1.5"></circle></svg>
+                </a>
+                <a href="https://youtube.com/@thekaranpargaien" target="_blank" class="social-btn" title="YouTube">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.50 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+                </a>
+                <a href="https://wa.me/919528405428" target="_blank" class="social-btn" title="WhatsApp">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.228 2.231A10.77 10.77 0 0 0 2.046 22.07l-1.754 3.699 3.897-1.602A10.768 10.768 0 0 0 22.228 2.231z"></path><path d="M17.187 14.355c-.253-.627-1.465-1.253-2.018-1.38-.553-.126-1.38-.127-2.18.253-.551.253-1.38.628-1.38 1.507 0 .88.88 1.128 1.38 1.38 1.099.504 1.75 1.003 2.018 1.629.268.627.268 1.628-.253 2.255-.521.626-1.38 1.003-2.18.88-2.269-.378-4.537-1.883-5.926-3.899-.38-.575-.567-1.127-.567-1.879 0-.629.19-1.253.567-1.879 1.39-2.016 3.657-3.52 5.926-3.898.8-.126 1.659.253 2.18.88.522.627.522 1.628.253 2.255-.268.626-.919 1.125-2.018 1.629-.5.252-1.38.5-1.38 1.38 0 .879.829 1.254 1.38 1.507.8.38 1.627.38 2.18.253.553-.127 1.765-.753 2.018-1.38z"></path></svg>
+                </a>
+            </div>
+
+            <!-- Gradient orbs (background) -->
+            <div class="glow-orb"></div>
+            <div class="teal-orb"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-left">Karan Pargaien</div>
+            <div class="footer-center">Built with intention · 2025</div>
+            <div class="footer-right">
+                <a href="https://github.com/thekaranpargaie/portfolio" target="_blank">View Source</a>
+                <a href="https://github.com/thekaranpargaie/portfolio" target="_blank">GitHub</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+</body>
 </html>
+
