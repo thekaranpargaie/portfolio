@@ -326,44 +326,6 @@ body {
 }
 
 /* Tech Ticker */
-@keyframes scroll-left {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-50%);
-    }
-}
-
-.tech-ticker-wrapper {
-    overflow: hidden;
-    border-top: 1px solid var(--border-color);
-    background: var(--bg-secondary);
-    margin-top: 40px;
-    width: 100vw;
-    position: relative;
-    left: 50%;
-    right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
-}
-
-.tech-ticker {
-    display: flex;
-    gap: 40px;
-    padding: 0 32px;
-    height: 60px;
-    align-items: center;
-    white-space: nowrap;
-    animation: scroll-left 30s linear infinite;
-}
-
-.tech-ticker span {
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--text-secondary);
-    flex-shrink: 0;
-}
 
 @media (max-width: 1024px) {
     .hero-container {
@@ -423,20 +385,6 @@ body {
         padding: 16px;
     }
 
-    .tech-ticker {
-        padding: 0 16px;
-        gap: 16px;
-        height: 50px;
-        animation: scroll-left 25s linear infinite;
-    }
-
-    .tech-ticker span {
-        font-size: 12px;
-    }
-
-    .tech-ticker-wrapper {
-        margin-top: 30px;
-    }
 }
 
 /* ===== About Section ===== */
