@@ -1,64 +1,434 @@
 {
-  "name": "Karan Pargaien",
-  "role": ".NET Engineer",
-  "tagline": "Building structured engineering systems",
-  "bio": "Full-stack developer specializing in .NET Core, cloud infrastructure, and AI integration. Passionate about crafting elegant solutions to complex engineering problems.",
-  "location": "Remote",
-  "email": "thekaranpargaien@gmail.com",
-  "skills": [
-    "C# (.NET Core)",
-    "ASP.NET Core",
-    "Microservices Architecture",
-    "DDD & CQRS",
-    "RabbitMQ",
-    "SignalR",
-    "Docker",
-    "Kubernetes",
-    "Azure",
-    "Angular",
-    "VueJS",
-    "HTML, CSS, JavaScript",
-    "RESTful APIs",
-    "OpenAPI",
-    "EF Core",
-    "LINQ",
-    "ADO.NET",
-    "MySQL",
-    "PostgreSQL",
-    "MS SQL",
-    "CI/CD & DevOps",
-    "Design Patterns",
-    "AI Integration",
-    "System Design"
+  "schemaVersion": "3.0",
+  "profileType": "CareerKnowledgeGraph",
+  "personalInfo": {
+    "fullName": "Karan Pargaien",
+    "firstName": "Karan",
+    "lastName": "Pargaien",
+    "currentTitle": "Senior Software Engineer",
+    "primaryRole": "Backend Engineer",
+    "secondaryRoles": [
+      "Platform Engineer",
+      "AI Tool Builder",
+      "Solution Architect"
+    ],
+    "experienceBand": "5+ Years",
+    "location": {
+      "city": "Noida",
+      "state": "Uttar Pradesh",
+      "country": "India"
+    },
+    "preferredWorkModes": [
+      "Remote",
+      "Hybrid",
+      "Onsite"
+    ],
+    "preferredLocations": [
+      "Any Location"
+    ]
+  },
+  "contact": {
+    "phone": "7017730781",
+    "email": "thekaranpargaien@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/thekaranpargaie/",
+    "github": "https://github.com/thekaranpargaie",
+    "portfolio": "https://thekaranpargaie.github.io/portfolio/",
+    "newsletter": "https://www.linkedin.com/newsletters/software-engineering-weekly-7317386467901591552/",
+    "youtube": "https://www.youtube.com/@thekaranpargaien"
+  },
+  "summary": {
+    "headline": "Senior Software Engineer specializing in ASP.NET Core, Microservices, DDD, CQRS, Cloud, DevOps, AI Tooling, and Developer Platforms.",
+    "about": "Experienced software engineer building scalable backend systems, enterprise SaaS products, developer productivity platforms, AI-powered tooling, and distributed architectures. Strong expertise in backend engineering, architecture design, domain-driven systems, cloud-native development, and engineering workflow optimization."
+  },
+  "focusAreas": [
+    "Backend Engineering",
+    "Microservices",
+    "Domain Driven Design",
+    "CQRS",
+    "Distributed Systems",
+    "Cloud Engineering",
+    "Developer Productivity",
+    "AI Engineering",
+    "Open Source",
+    "Platform Engineering"
   ],
-  "socials": {
-    "github": "thekaranpargaie",
-    "linkedin": "thekaranpargaie",
-    "instagram": "thekaranpargaien",
-    "youtube": "thekaranpargaien",
-    "whatsapp": "919528405428",
-    "email": "thekaranpargaien@gmail.com"
+  "skills": {
+    "webTechnologies": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "TypeScript",
+      "Vue.js",
+      "Angular"
+    ],
+    "programmingLanguages": [
+      "C",
+      "C++",
+      "C#"
+    ],
+    "backendTechnologies": [
+      "ASP.NET Core",
+      ".NET",
+      "REST APIs",
+      "SignalR"
+    ],
+    "dataAccessTechnologies": [
+      "ADO.NET",
+      "LINQ",
+      "Entity Framework Core"
+    ],
+    "databases": [
+      "SQL Server",
+      "PostgreSQL",
+      "MySQL"
+    ],
+    "architecture": [
+      "Microservices",
+      "Domain Driven Design",
+      "CQRS",
+      "Clean Architecture",
+      "Design Patterns"
+    ],
+    "messaging": [
+      "RabbitMQ"
+    ],
+    "devops": [
+      "CI/CD",
+      "GitHub Actions",
+      "GitHub Projects"
+    ],
+    "cloud": [
+      "Azure"
+    ],
+    "containers": [
+      "Docker"
+    ],
+    "gatewayAndNetworking": [
+      "Ocelot"
+    ],
+    "testing": [
+      "xUnit",
+      "Unit Testing",
+      "Integration Testing"
+    ],
+    "developerTools": [
+      "Chrome Extension Development",
+      "NuGet Package Development"
+    ],
+    "ai": [
+      "MCP",
+      "AI Agents",
+      "OpenAPI",
+      "Local AI",
+      "LLM Applications",
+      "AI Tooling"
+    ],
+    "softSkills": [
+      "Creative Thinking",
+      "Adaptability",
+      "Active Listening",
+      "Public Speaking"
+    ]
+  },
+  "designPatterns": {
+    "level": "Proficient",
+    "description": "Strong understanding and implementation of software design patterns to solve architecture and application design problems."
   },
   "experience": [
     {
-      "role": "Software Engineer (.NET Core)",
       "company": "Taazaa Tech Pvt Ltd",
-      "duration": "Oct 2023 - Present",
-      "description": "Working on microservice-based DDD architecture, REST APIs, cloud solutions, DevOps pipelines, and scalable backend systems using ASP.NET Core, RabbitMQ, Docker, SignalR, and modern design patterns."
+      "designation": "Software Engineer (.NET Core)",
+      "normalizedTitle": "Backend Engineer",
+      "employmentType": "Full Time",
+      "startDate": "2023-10",
+      "endDate": null,
+      "current": true,
+      "team": {
+        "name": "Innago (Scale Labs)",
+        "domain": "Defactor / Internal Initiatives",
+        "teamSize": 4
+      },
+      "technologies": [
+        "ASP.NET Core",
+        "Microservices",
+        "DDD",
+        "CQRS",
+        "RabbitMQ",
+        "Docker",
+        "Azure",
+        "SignalR",
+        "CI/CD",
+        "Ocelot"
+      ]
     },
     {
-      "role": "Software Engineer (.NET Core)",
       "company": "Great Developers Infotech",
-      "duration": "Dec 2020 - Sep 2023",
-      "description": "Built scalable enterprise applications and RESTful APIs using ASP.NET Core, Angular, and EF Core. Focused on backend architecture, database optimization, CI/CD deployment, and client-driven feature development."
+      "designation": "Software Engineer (.NET Core)",
+      "employmentType": "Full Time",
+      "startDate": "2020-12",
+      "endDate": "2023-09",
+      "current": false
     }
   ],
-  "commands": {
-    "about": "Display profile information",
-    "projects": "Show all projects",
-    "stats": "Live GitHub statistics",
-    "timeline": "Career timeline",
-    "contact": "Get in touch",
-    "help": "Show available commands"
+  "projects": [
+    {
+      "name": "Innago Property & Rental Management Solution",
+      "domain": "Property Management",
+      "architecture": [
+        "Microservices",
+        "DDD"
+      ],
+      "scale": {
+        "monthlyActiveUsers": 80000,
+        "microservices": 25
+      },
+      "technologies": [
+        "ASP.NET Core 6",
+        "Angular 14",
+        "Entity Framework",
+        "REST APIs",
+        "xUnit",
+        "CI/CD"
+      ],
+      "responsibilities": [
+        "Requirement Analysis",
+        "Backend Development",
+        "Business Logic Development",
+        "Data Access Layer Development",
+        "REST API Development",
+        "Angular Development",
+        "Unit Testing",
+        "Integration Testing",
+        "CI/CD Deployment",
+        "Client Interaction"
+      ]
+    },
+    {
+      "name": "Wipfli Tax & Audit Software",
+      "domain": "Tax & Audit",
+      "architecture": [
+        "Microservices",
+        "DDD"
+      ],
+      "technologies": [
+        "ASP.NET Core 8",
+        "Entity Framework",
+        "REST APIs",
+        "xUnit"
+      ],
+      "responsibilities": [
+        "Requirement Analysis",
+        "Backend Development",
+        "Application Architecture",
+        "Domain Modeling",
+        "REST API Development",
+        "Unit Testing",
+        "Integration Testing"
+      ]
+    },
+    {
+      "name": "HRStop HRMS",
+      "domain": "Human Resource Management",
+      "technologies": [
+        "ASP.NET MVC",
+        "Entity Framework",
+        "SQL Server"
+      ],
+      "responsibilities": [
+        "Backend Development",
+        "Database Design",
+        "Database Management",
+        "Performance Optimization",
+        "SQL Query Optimization"
+      ]
+    },
+    {
+      "name": "GitHub Timesheet Extension",
+      "domain": "Developer Productivity",
+      "technologies": [
+        "ASP.NET Core",
+        "REST APIs",
+        "GitHub Projects"
+      ],
+      "responsibilities": [
+        "Timesheet Management",
+        "Worklog Tracking",
+        "Approval Workflows",
+        "Reporting",
+        "Stakeholder Collaboration",
+        "CI/CD Support"
+      ],
+      "impact": {
+        "users": 250,
+        "hoursSavedPerMonth": 80,
+        "adoptionRate": "100%"
+      }
+    },
+    {
+      "name": "openapi-to-mcp",
+      "domain": "AI Tooling",
+      "category": "Model Context Protocol"
+    }
+  ],
+  "repositories": [
+    {
+      "name": "context-os",
+      "category": "AI Operating System",
+      "description": "Local-first AI operating system for managing conversational context, memory, and inference using local LLMs."
+    },
+    {
+      "name": "auth0-multi-tenancy-starter",
+      "category": "SaaS Boilerplate",
+      "description": "Multi-tenant SaaS starter using .NET 10, Vue 3, and Auth0 Organizations."
+    },
+    {
+      "name": "private-chat",
+      "category": "Privacy Platform",
+      "description": "Privacy-first communication platform."
+    },
+    {
+      "name": "sketch",
+      "category": "Developer Platform",
+      "description": "Diagram-first IDE generating production-ready .NET solutions."
+    },
+    {
+      "name": "crowd-serve",
+      "category": "Distributed Systems",
+      "description": "Peer-assisted data delivery infrastructure."
+    },
+    {
+      "name": "noto",
+      "category": "AI Productivity",
+      "description": "On-device AI notetaker and work manager."
+    },
+    {
+      "name": "api-mock-server",
+      "category": "Developer Tooling",
+      "description": "Instant mock API generation platform."
+    }
+  ],
+  "achievements": [
+    {
+      "title": "Jira to GitHub Projects Migration",
+      "description": "Led migration from Jira to GitHub Projects enabling direct Copilot integration and tighter repository-project linkage.",
+      "impact": {
+        "costSavings": "1 year Jira licensing approximately equals 4 years GitHub licensing"
+      }
+    },
+    {
+      "title": "GitHub Timesheet Extension",
+      "description": "Built a custom worklog and timesheet platform for GitHub Projects.",
+      "impact": {
+        "users": 250,
+        "hoursSavedPerMonth": 80,
+        "adoptionRate": "100%"
+      }
+    },
+    {
+      "title": "Enterprise Scale Systems",
+      "description": "Contributed to systems serving 80,000+ monthly active users."
+    }
+  ],
+  "starStories": [
+    {
+      "title": "Jira Migration",
+      "situation": "High Jira licensing costs and disconnected engineering workflows.",
+      "task": "Replace Jira and improve engineering productivity.",
+      "action": "Migrated teams to GitHub Projects and redesigned workflows.",
+      "result": "Reduced tooling costs significantly and enabled GitHub Copilot adoption."
+    },
+    {
+      "title": "Timesheet Extension",
+      "situation": "GitHub Projects lacked worklog management capabilities.",
+      "task": "Create an integrated timesheet and worklog solution.",
+      "action": "Designed and developed a custom extension using ASP.NET Core.",
+      "result": "100% adoption across the organization with measurable productivity gains."
+    }
+  ],
+  "awards": [
+    {
+      "name": "Be Your Own Captain",
+      "year": 2024
+    },
+    {
+      "name": "Core Value - Curiosity",
+      "year": 2024
+    },
+    {
+      "name": "Core Value - Craftsmanship",
+      "year": 2025
+    }
+  ],
+  "contentCreation": {
+    "newsletter": {
+      "name": "Software Engineering Weekly",
+      "platform": "LinkedIn"
+    },
+    "youtube": {
+      "channel": "@thekaranpargaien"
+    },
+    "activities": [
+      "Technical Videos",
+      "Writing Articles"
+    ]
+  },
+  "education": [
+    {
+      "qualification": "Bachelor of Science",
+      "specialization": "Computer Science",
+      "institution": "Kumaun University",
+      "startYear": 2017,
+      "endYear": 2020
+    },
+    {
+      "qualification": "Intermediate",
+      "specialization": "Computer Science with C++",
+      "institution": "Sri Sai Senior Secondary School"
+    },
+    {
+      "qualification": "Diploma in Web Development",
+      "institution": "Hiltron Calc"
+    }
+  ],
+  "languages": [
+    "English",
+    "Hindi"
+  ],
+  "interests": [
+    "Creating Technical Videos",
+    "Writing Articles",
+    "Open Source Contribution",
+    "AI Development"
+  ],
+  "resumeHistory": {
+    "originalObjective": "Seeking a challenging position in an organization where I can use my talent and skills to grow and expand an organization as well as myself."
+  },
+  "careerTargets": {
+    "roles": [
+      "Senior Software Engineer",
+      "Backend Engineer",
+      "Lead Engineer",
+      "Principal Engineer",
+      "Solution Architect",
+      "Platform Engineer",
+      "AI Engineer"
+    ]
+  },
+  "resumeMetadata": {
+    "primaryIdentity": "Backend Engineer",
+    "secondaryIdentity": "AI Tool Builder",
+    "thirdIdentity": "Platform Engineer",
+    "seniority": "Senior",
+    "experienceBand": "5+ Years",
+    "primaryStack": ".NET",
+    "coreStrengths": [
+      "Microservices",
+      "DDD",
+      "CQRS",
+      "Architecture",
+      "Developer Productivity",
+      "AI Tooling",
+      "Cloud Engineering"
+    ]
   }
 }
